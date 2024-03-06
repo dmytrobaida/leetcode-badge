@@ -1,17 +1,16 @@
 import { createSVGWindow } from "svgdom";
-import { SVG, Svg, registerWindow } from "@svgdotjs/svg.js";
+import { SVG, G, registerWindow } from "@svgdotjs/svg.js";
 
 const window = createSVGWindow();
 registerWindow(window, window.document);
 
-const width = 410;
-const height = 186;
-
 async function main() {
   const svg = SVG();
+  const width = 410;
+  const height = 186;
+
   svg.width(width);
   svg.height(height);
-
   svg.rect(width, height).radius(5, 5).fill("#F8F8F8");
 
   svg
@@ -25,36 +24,68 @@ async function main() {
     .fill("#3c3c4399")
     .move(13, 16);
 
-  drawCircle(svg, 75);
+  drawTotalProgress(svg.group(), {
+    x: 75,
+    y: 110,
+    cur: 99,
+    max: 90,
+  });
 
-  const svgString = svg.svg();
+  drawDifficultyProgress(svg.group(), {
+    x: 170,
+    y: 60,
+    cur: 33,
+    max: 100,
+    color: "#00af9b",
+    backColor: "#2db55d26",
+    difficulty: "Easy",
+  });
 
-  return svgString;
+  drawDifficultyProgress(svg.group(), {
+    x: 170,
+    y: 110,
+    cur: 33,
+    max: 100,
+    color: "#ffb800",
+    backColor: "#ffb80026",
+    difficulty: "Medium",
+  });
+
+  drawDifficultyProgress(svg.group(), {
+    x: 170,
+    y: 160,
+    cur: 33,
+    max: 100,
+    color: "#ef4743",
+    backColor: "#ef474326",
+    difficulty: "Hard",
+  });
+
+  return svg.svg();
 }
 
-Bun.serve({
-  async fetch(req) {
-    return new Response(await main(), {
-      headers: {
-        "Content-Type": "image/svg+xml",
-      },
-    });
-  },
-});
+type TotalProgressOptions = {
+  x: number;
+  y: number;
+  max: number;
+  cur: number;
+};
 
-function drawCircle(svg: Svg, x: number) {
-  svg
+function drawTotalProgress(group: G, options: TotalProgressOptions) {
+  const { x, y, cur } = options;
+
+  group
     .circle(92)
-    .center(x, 120)
+    .center(x, y)
     .stroke({
       width: 3,
       color: "#dfdfdf",
     })
     .fill("transparent");
 
-  svg
+  group
     .circle(92)
-    .center(x, 120)
+    .center(x, y)
     .rotate(-90)
     .stroke({
       width: 5,
@@ -64,8 +95,8 @@ function drawCircle(svg: Svg, x: number) {
     })
     .fill("transparent");
 
-  svg
-    .text("562")
+  group
+    .text(cur.toString())
     .font({
       family:
         "-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji",
@@ -73,9 +104,9 @@ function drawCircle(svg: Svg, x: number) {
       anchor: "middle",
     })
     .fill("#262626")
-    .center(x, 110);
+    .center(x, y - 10);
 
-  svg
+  group
     .text("Solved")
     .font({
       family:
@@ -84,5 +115,58 @@ function drawCircle(svg: Svg, x: number) {
       anchor: "middle",
     })
     .fill("#3c3c4399")
-    .center(x, 130);
+    .center(x, y + 15);
 }
+
+type DifficultyProgressOptions = {
+  x: number;
+  y: number;
+  cur: number;
+  max: number;
+  color: string;
+  backColor: string;
+  difficulty: string;
+};
+
+function drawDifficultyProgress(group: G, options: DifficultyProgressOptions) {
+  const { x, y, cur, max, color, backColor, difficulty } = options;
+  const fullWidth = 214;
+  const smallWidth = Math.floor(fullWidth * (cur / max));
+
+  group.rect(fullWidth, 8).radius(4, 4).fill(backColor).move(x, y);
+  group.rect(smallWidth, 8).radius(4, 4).fill(color).move(x, y);
+
+  group
+    .text(difficulty)
+    .font({
+      family:
+        "-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji",
+      size: 12,
+      anchor: "middle",
+    })
+    .fill("#3c3c4399")
+    .move(x, y - 20);
+
+  const text = group
+    .text(`${cur}/${max}`)
+    .font({
+      family:
+        "-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji",
+      size: 12,
+      anchor: "middle",
+    })
+    .fill("#262626bf");
+
+  text.move(x + fullWidth - text.length(), y - 20);
+}
+
+// @ts-ignore
+Bun.serve({
+  async fetch(_) {
+    return new Response(await main(), {
+      headers: {
+        "Content-Type": "image/svg+xml",
+      },
+    });
+  },
+});
