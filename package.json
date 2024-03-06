@@ -1,0 +1,16 @@
+{
+  "name": "leetcode-badge",
+  "version": "0.0.1",
+  "description": "LeetCode badge generator",
+  "main": "index.js",
+  "author": "Dmytro Baida",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@svgdotjs/svg.js": "^3.2.0",
+    "svgdom": "^0.1.19"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.25"
+  }
+}
