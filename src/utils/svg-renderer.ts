@@ -1,10 +1,16 @@
 import { createSVGWindow } from "svgdom";
 import { SVG, G, registerWindow } from "@svgdotjs/svg.js";
 
+import {
+  DifficultyProgressOptions,
+  RenderSvgOptions,
+  TotalProgressOptions,
+} from "./types";
+
 const window = createSVGWindow();
 registerWindow(window, window.document);
 
-export function renderSvg() {
+export function renderSvg(options: RenderSvgOptions) {
   const svg = SVG();
   const width = 410;
   const height = 186;
@@ -27,15 +33,15 @@ export function renderSvg() {
   drawTotalProgress(svg.group(), {
     x: 75,
     y: 110,
-    cur: 20,
-    max: 300,
+    solved: options.totalSolved,
+    total: options.totalQuestions,
   });
 
   drawDifficultyProgress(svg.group(), {
     x: 170,
     y: 60,
-    cur: 33,
-    max: 100,
+    solved: options.easySolved,
+    total: options.totalEasy,
     color: "#00af9b",
     backColor: "#2db55d26",
     difficulty: "Easy",
@@ -44,8 +50,8 @@ export function renderSvg() {
   drawDifficultyProgress(svg.group(), {
     x: 170,
     y: 110,
-    cur: 33,
-    max: 100,
+    solved: options.mediumSolved,
+    total: options.totalMedium,
     color: "#ffb800",
     backColor: "#ffb80026",
     difficulty: "Medium",
@@ -54,8 +60,8 @@ export function renderSvg() {
   drawDifficultyProgress(svg.group(), {
     x: 170,
     y: 160,
-    cur: 33,
-    max: 100,
+    solved: options.hardSolved,
+    total: options.totalHard,
     color: "#ef4743",
     backColor: "#ef474326",
     difficulty: "Hard",
@@ -64,15 +70,8 @@ export function renderSvg() {
   return svg.svg();
 }
 
-type TotalProgressOptions = {
-  x: number;
-  y: number;
-  max: number;
-  cur: number;
-};
-
 function drawTotalProgress(group: G, options: TotalProgressOptions) {
-  const { x, y, cur, max } = options;
+  const { x, y, solved: cur, total: max } = options;
   const radius = 50;
   const length = 2 * Math.PI * radius;
 
@@ -125,18 +124,16 @@ function drawTotalProgress(group: G, options: TotalProgressOptions) {
     .fill("#3c3c4399");
 }
 
-type DifficultyProgressOptions = {
-  x: number;
-  y: number;
-  cur: number;
-  max: number;
-  color: string;
-  backColor: string;
-  difficulty: string;
-};
-
 function drawDifficultyProgress(group: G, options: DifficultyProgressOptions) {
-  const { x, y, cur, max, color, backColor, difficulty } = options;
+  const {
+    x,
+    y,
+    solved: cur,
+    total: max,
+    color,
+    backColor,
+    difficulty,
+  } = options;
   const fullWidth = 214;
   const smallWidth = Math.floor(fullWidth * (cur / max));
 
