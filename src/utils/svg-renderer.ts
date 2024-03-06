@@ -9,20 +9,19 @@ export function renderSvg() {
   const width = 410;
   const height = 186;
 
-  svg.width(width);
-  svg.height(height);
   svg.rect(width, height).radius(5, 5).fill("#F8F8F8");
 
   svg
     .text("Solved Problems")
+    .attr({ x: 12, y: 30 })
     .font({
       family:
         "-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji",
       size: 13,
-      anchor: "middle",
+      anchor: "start",
+      "dominant-baseline": "middle",
     })
-    .fill("#3c3c4399")
-    .move(13, 16);
+    .fill("#3c3c4399");
 
   drawTotalProgress(svg.group(), {
     x: 75,
@@ -107,6 +106,7 @@ function drawTotalProgress(group: G, options: TotalProgressOptions) {
         "-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji",
       size: 24,
       anchor: "middle",
+      "dominant-baseline": "middle",
     })
     .fill("#262626")
     .center(x, y - 10);
@@ -118,6 +118,7 @@ function drawTotalProgress(group: G, options: TotalProgressOptions) {
         "-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji",
       size: 12,
       anchor: "middle",
+      "dominant-baseline": "middle",
     })
     .fill("#3c3c4399")
     .center(x, y + 15);
@@ -138,19 +139,20 @@ function drawDifficultyProgress(group: G, options: DifficultyProgressOptions) {
   const fullWidth = 214;
   const smallWidth = Math.floor(fullWidth * (cur / max));
 
-  group.rect(fullWidth, 8).radius(4, 4).fill(backColor).move(x, y);
-  group.rect(smallWidth, 8).radius(4, 4).fill(color).move(x, y);
+  group.rect(fullWidth, 8).attr({ x: x, y: y }).radius(4, 4).fill(backColor);
+  group.rect(smallWidth, 8).attr({ x: x, y: y }).radius(4, 4).fill(color);
 
   group
     .text(difficulty)
+    .attr({ x: x, y: y - 15 })
     .font({
       family:
         "-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji",
       size: 12,
-      anchor: "middle",
+      anchor: "start",
+      "dominant-baseline": "middle",
     })
-    .fill("#3c3c4399")
-    .move(x, y - 20);
+    .fill("#3c3c4399");
 
   const text = group
     .text(`${cur}/${max}`)
@@ -158,9 +160,10 @@ function drawDifficultyProgress(group: G, options: DifficultyProgressOptions) {
       family:
         "-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji",
       size: 12,
-      anchor: "middle",
+      anchor: "start",
+      "dominant-baseline": "middle",
     })
     .fill("#262626bf");
 
-  text.move(x + fullWidth - text.length(), y - 20);
+  text.attr({ x: x + fullWidth - text.length(), y: y - 15 });
 }
