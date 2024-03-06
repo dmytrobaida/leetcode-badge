@@ -4,7 +4,7 @@ import { SVG, G, registerWindow } from "@svgdotjs/svg.js";
 const window = createSVGWindow();
 registerWindow(window, window.document);
 
-async function main() {
+export function renderSvg() {
   const svg = SVG();
   const width = 410;
   const height = 186;
@@ -164,14 +164,3 @@ function drawDifficultyProgress(group: G, options: DifficultyProgressOptions) {
 
   text.move(x + fullWidth - text.length(), y - 20);
 }
-
-// @ts-ignore
-Bun.serve({
-  async fetch(_) {
-    return new Response(await main(), {
-      headers: {
-        "Content-Type": "image/svg+xml",
-      },
-    });
-  },
-});
