@@ -154,16 +154,15 @@ function drawDifficultyProgress(group: G, options: DifficultyProgressOptions) {
     })
     .fill("#3c3c4399");
 
-  const text = group
+  group
     .text(`${cur}/${max}`)
+    .attr({ x: x + fullWidth, y: y - 15 })
     .font({
       family:
         "-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji",
       size: 12,
-      anchor: "start",
+      anchor: "end",
       "dominant-baseline": "middle",
     })
     .fill("#262626bf");
-
-  text.attr({ x: x + fullWidth - text.length(), y: y - 15 });
 }
