@@ -10,7 +10,6 @@ export async function GET(
     "https://leetcode-stats-api.herokuapp.com/" + user
   );
   const json = await response.json();
-
   const svg = renderSvg({
     ...json,
   });
