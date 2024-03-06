@@ -27,8 +27,8 @@ async function main() {
   drawTotalProgress(svg.group(), {
     x: 75,
     y: 110,
-    cur: 99,
-    max: 90,
+    cur: 20,
+    max: 300,
   });
 
   drawDifficultyProgress(svg.group(), {
@@ -72,10 +72,15 @@ type TotalProgressOptions = {
 };
 
 function drawTotalProgress(group: G, options: TotalProgressOptions) {
-  const { x, y, cur } = options;
+  const { x, y, cur, max } = options;
+  const radius = 50;
+  const length = 2 * Math.PI * radius;
+
+  const dashLength = length * (cur / max);
+  const gapLength = length - dashLength;
 
   group
-    .circle(92)
+    .circle(radius * 2)
     .center(x, y)
     .stroke({
       width: 3,
@@ -84,13 +89,13 @@ function drawTotalProgress(group: G, options: TotalProgressOptions) {
     .fill("transparent");
 
   group
-    .circle(92)
+    .circle(radius * 2)
     .center(x, y)
     .rotate(-90)
     .stroke({
       width: 5,
       color: "#ffa116",
-      dasharray: "52.87529510455946 236.1512290257015",
+      dasharray: `${dashLength} ${gapLength}`,
       dashoffset: 0,
     })
     .fill("transparent");
