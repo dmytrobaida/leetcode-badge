@@ -101,6 +101,7 @@ function drawTotalProgress(group: G, options: TotalProgressOptions) {
 
   group
     .text(cur.toString())
+    .attr({ x: x, y: y - 10 })
     .font({
       family:
         "-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji",
@@ -108,11 +109,11 @@ function drawTotalProgress(group: G, options: TotalProgressOptions) {
       anchor: "middle",
       "dominant-baseline": "middle",
     })
-    .fill("#262626")
-    .center(x, y - 10);
+    .fill("#262626");
 
   group
     .text("Solved")
+    .attr({ x: x, y: y + 15 })
     .font({
       family:
         "-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji",
@@ -120,8 +121,7 @@ function drawTotalProgress(group: G, options: TotalProgressOptions) {
       anchor: "middle",
       "dominant-baseline": "middle",
     })
-    .fill("#3c3c4399")
-    .center(x, y + 15);
+    .fill("#3c3c4399");
 }
 
 type DifficultyProgressOptions = {
