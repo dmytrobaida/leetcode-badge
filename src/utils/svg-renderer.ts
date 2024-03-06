@@ -9,6 +9,8 @@ export function renderSvg() {
   const width = 410;
   const height = 186;
 
+  svg.width(width);
+  svg.height(height);
   svg.rect(width, height).radius(5, 5).fill("#F8F8F8");
 
   svg
