@@ -1,5 +1,5 @@
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return notFound();
+  return redirect("https://github.com/dmytrobaida/leetcode-badge");
 }
