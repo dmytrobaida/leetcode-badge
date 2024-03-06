@@ -1,6 +1,6 @@
 # LeetCode Badge
 
-Add your LeetCode statistics badge to any GitHub page md file!
+Add your LeetCode statistics badge to any GitHub page or profile!
 
 ![Dmytro Baida's LeetCode stats](https://leetcode-badge-sage.vercel.app/badge/dmytrobaida)
 
