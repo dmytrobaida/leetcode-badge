@@ -6,14 +6,20 @@ export async function GET(
   { params }: { params: { user: string } }
 ) {
   const user = params.user;
+  const { searchParams } = new URL(request.url);
+
+  const themeName = searchParams.get("theme") ?? "";
+  const theme = Themes[themeName] ?? Themes["light"];
+
   // TODO: Replace with own implementation
   const response = await fetch(
     "https://leetcode-stats-api.herokuapp.com/" + user
   );
+
   const json = await response.json();
   const svg = renderSvg({
     data: json,
-    theme: Themes["dark"],
+    theme: theme,
   });
 
   return new Response(svg, {
