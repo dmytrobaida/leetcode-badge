@@ -13,7 +13,7 @@ export async function GET(
   const json = await response.json();
   const svg = renderSvg({
     data: json,
-    theme: Themes["light"],
+    theme: Themes["dark"],
   });
 
   return new Response(svg, {

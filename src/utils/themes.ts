@@ -1,6 +1,7 @@
 import { Theme } from "./types";
 
 export const Themes: { [name: string]: Theme } = {
+  // Light
   light: {
     solvedText: {
       textColor: "#3c3c4399",
@@ -28,6 +29,39 @@ export const Themes: { [name: string]: Theme } = {
       },
       Hard: {
         lineColor: "#ef474326",
+        progressColor: "#ef4743",
+      },
+    },
+  },
+
+  // Dark
+  dark: {
+    solvedText: {
+      textColor: "#eff2f699",
+    },
+    totalProgress: {
+      ringColor: "#4a4a4a",
+      progressColor: "#ffa116",
+      textColor: {
+        solved: "#eff2f699",
+        count: "#ffffff",
+      },
+    },
+    difficultyProgress: {
+      textColor: {
+        difficulty: "#eff2f699",
+        total: "#eff1f6bf",
+      },
+      Easy: {
+        lineColor: "#2cbb5d40",
+        progressColor: "#00b8a3",
+      },
+      Medium: {
+        lineColor: "#ffc01e40",
+        progressColor: "#ffc01e",
+      },
+      Hard: {
+        lineColor: "#ef474340",
         progressColor: "#ef4743",
       },
     },
