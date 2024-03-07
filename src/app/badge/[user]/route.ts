@@ -15,7 +15,8 @@ export async function GET(
   const bgColor = searchParams.get("bgColor");
 
   const svg = renderSvg({
-    data: await getUserData(user),
+    // data: await getUserData(user),
+    data: await getUserDataLegacy(user),
     theme: theme,
     bgColor: bgColor != null ? `#${bgColor}` : undefined,
   });
