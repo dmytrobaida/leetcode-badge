@@ -70,7 +70,7 @@ export const Themes: { [name: string]: Theme } = {
   // Neutral
   neutral: {
     solvedText: {
-      textColor: "#006AFF",
+      textColor: "#417E87",
     },
     totalProgress: {
       ringColor: "#dfdfdf",
