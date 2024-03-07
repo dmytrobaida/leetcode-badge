@@ -1,27 +1,62 @@
 export type TotalProgressOptions = {
   x: number;
   y: number;
-  total: number;
-  solved: number;
+  data: {
+    total: number;
+    solved: number;
+  };
+  theme: Theme;
 };
 
 export type DifficultyProgressOptions = {
   x: number;
   y: number;
-  solved: number;
-  total: number;
-  color: string;
-  backColor: string;
-  difficulty: string;
+  data: {
+    difficulty: "Easy" | "Medium" | "Hard";
+    solved: number;
+    total: number;
+  };
+  theme: Theme;
 };
 
 export type RenderSvgOptions = {
-  totalSolved: number;
-  totalQuestions: number;
-  easySolved: number;
-  totalEasy: number;
-  mediumSolved: number;
-  totalMedium: number;
-  hardSolved: number;
-  totalHard: number;
+  data: {
+    totalSolved: number;
+    totalQuestions: number;
+    easySolved: number;
+    totalEasy: number;
+    mediumSolved: number;
+    totalMedium: number;
+    hardSolved: number;
+    totalHard: number;
+  };
+  theme: Theme;
+};
+
+type DifficultyProgress = {
+  lineColor: string;
+  progressColor: string;
+};
+
+export type Theme = {
+  solvedText: {
+    textColor: string;
+  };
+  totalProgress: {
+    ringColor: string;
+    progressColor: string;
+    textColor: {
+      solved: string;
+      count: string;
+    };
+  };
+  difficultyProgress: {
+    textColor: {
+      difficulty: string;
+      total: string;
+    };
+    Easy: DifficultyProgress;
+    Medium: DifficultyProgress;
+    Hard: DifficultyProgress;
+  };
 };

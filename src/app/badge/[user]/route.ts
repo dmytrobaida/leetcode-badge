@@ -1,4 +1,5 @@
 import { renderSvg } from "@/utils/svg-renderer";
+import { Themes } from "@/utils/themes";
 
 export async function GET(
   request: Request,
@@ -11,7 +12,8 @@ export async function GET(
   );
   const json = await response.json();
   const svg = renderSvg({
-    ...json,
+    data: json,
+    theme: Themes["light"],
   });
 
   return new Response(svg, {
