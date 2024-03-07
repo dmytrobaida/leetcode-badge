@@ -66,4 +66,37 @@ export const Themes: { [name: string]: Theme } = {
       },
     },
   },
+
+  // Neutral
+  neutral: {
+    solvedText: {
+      textColor: "#006AFF",
+    },
+    totalProgress: {
+      ringColor: "#dfdfdf",
+      progressColor: "#ffa116",
+      textColor: {
+        solved: "#417e87cc",
+        count: "#417E87",
+      },
+    },
+    difficultyProgress: {
+      textColor: {
+        difficulty: "#417E87",
+        total: "#417e87cc",
+      },
+      Easy: {
+        lineColor: "#2db55d26",
+        progressColor: "#00af9b",
+      },
+      Medium: {
+        lineColor: "#ffb80026",
+        progressColor: "#ffb800",
+      },
+      Hard: {
+        lineColor: "#ef474326",
+        progressColor: "#ef4743",
+      },
+    },
+  },
 };

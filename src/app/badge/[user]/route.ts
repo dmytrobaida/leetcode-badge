@@ -26,6 +26,10 @@ export async function GET(
     status: 200,
     headers: {
       "Content-Type": "image/svg+xml",
+      // Cache
+      "Cache-Control": "max-age=3600",
+      "CDN-Cache-Control": "max-age=3600",
+      "Vercel-CDN-Cache-Control": "max-age=3600",
     },
   });
 }
