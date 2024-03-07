@@ -26,7 +26,6 @@ export function renderSvg(options: RenderSvgOptions) {
         "-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji",
       size: 13,
       anchor: "start",
-      "dominant-baseline": "middle",
     })
     .fill("#3c3c4399");
 
@@ -101,25 +100,23 @@ function drawTotalProgress(group: G, options: TotalProgressOptions) {
 
   group
     .text(cur.toString())
-    .attr({ x: x, y: y - 10 })
+    .attr({ x: x, y: y - 2 })
     .font({
       family:
         "-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji",
       size: 24,
       anchor: "middle",
-      "dominant-baseline": "middle",
     })
     .fill("#262626");
 
   group
     .text("Solved")
-    .attr({ x: x, y: y + 15 })
+    .attr({ x: x, y: y + 21 })
     .font({
       family:
         "-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji",
       size: 12,
       anchor: "middle",
-      "dominant-baseline": "middle",
     })
     .fill("#3c3c4399");
 }
@@ -142,25 +139,23 @@ function drawDifficultyProgress(group: G, options: DifficultyProgressOptions) {
 
   group
     .text(difficulty)
-    .attr({ x: x, y: y - 15 })
+    .attr({ x: x, y: y - 9 })
     .font({
       family:
         "-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji",
       size: 12,
       anchor: "start",
-      "dominant-baseline": "middle",
     })
     .fill("#3c3c4399");
 
   group
     .text(`${cur}/${max}`)
-    .attr({ x: x + fullWidth, y: y - 15 })
+    .attr({ x: x + fullWidth, y: y - 9 })
     .font({
       family:
         "-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji",
       size: 12,
       anchor: "end",
-      "dominant-baseline": "middle",
     })
     .fill("#262626bf");
 }
