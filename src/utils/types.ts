@@ -31,6 +31,7 @@ export type RenderSvgOptions = {
     totalHard: number;
   };
   theme: Theme;
+  bgColor?: string;
 };
 
 type DifficultyProgress = {

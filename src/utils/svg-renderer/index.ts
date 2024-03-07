@@ -9,13 +9,18 @@ const window = createSVGWindow();
 registerWindow(window, window.document);
 
 export function renderSvg(options: RenderSvgOptions) {
-  const { data, theme } = options;
+  const { data, theme, bgColor } = options;
   const svg = SVG();
   const width = 410;
   const height = 186;
 
   svg.width(width);
   svg.height(height);
+
+  svg
+    .rect(width, height)
+    .radius(5, 5)
+    .fill(bgColor ?? "transparent");
 
   svg
     .text("Solved Problems")
