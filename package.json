@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "5.10.2",
     "@svgdotjs/svg.js": "^3.2.0",
     "leetcode-query": "^1.1.0",
     "next": "14.1.2",
@@ -23,6 +24,7 @@
     "@types/svgdom": "^0.1.2",
     "eslint": "^8",
     "eslint-config-next": "14.1.2",
+    "prisma": "^5.10.2",
     "typescript": "^5"
   }
 }
