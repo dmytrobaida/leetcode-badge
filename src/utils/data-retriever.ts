@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 
 import { getUserDataLegacy } from "./user-data/get-user-data-legacy";
+import { RenderSvgOptions } from "./types";
 
 const prisma = new PrismaClient();
 
@@ -8,6 +9,8 @@ export async function retrieveUserData(user: string) {
   const { data, success } = await getUserDataLegacy(user);
 
   if (success) {
+    console.log("Creating or updating cache value");
+
     // create or update cache
     await prisma.badgeCache.upsert({
       where: {
@@ -38,5 +41,5 @@ export async function retrieveUserData(user: string) {
     return null;
   }
 
-  return cache.data;
+  return cache.data as RenderSvgOptions["data"];
 }

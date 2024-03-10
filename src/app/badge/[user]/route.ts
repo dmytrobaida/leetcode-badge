@@ -11,7 +11,6 @@ export async function GET(
   const themeName = searchParams.get("theme") ?? "";
   const theme = Themes[themeName] ?? Themes["light"];
   const bgColor = searchParams.get("bgColor");
-
   const data = await retrieveUserData(user);
 
   if (data == null) {
