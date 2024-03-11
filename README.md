@@ -6,28 +6,40 @@ Add your LeetCode statistics badge to any GitHub page or profile!
 
 Supported themes
 
-- Light
+- Light (default)
 - Dark
 - Neutral
 
 ### Light
 
-![Dmytro Baida's LeetCode stats light](https://leetcode-badge-sage.vercel.app/badge/dmytrobaida)
+```markdown
+![Dmytro Baida's LeetCode stats light](https://leetcode-badge-sage.vercel.app/badge/dmytrobaida?bgColor=fff)
+```
+
+![Dmytro Baida's LeetCode stats light](https://leetcode-badge-sage.vercel.app/badge/dmytrobaida?bgColor=fff)
 
 ### Dark
 
-![Dmytro Baida's LeetCode stats light](https://leetcode-badge-sage.vercel.app/badge/dmytrobaida?theme=dark&bgColor=282828)
+```markdown
+![Dmytro Baida's LeetCode stats dark](https://leetcode-badge-sage.vercel.app/badge/dmytrobaida?theme=dark&bgColor=282828)
+```
+
+![Dmytro Baida's LeetCode stats dark](https://leetcode-badge-sage.vercel.app/badge/dmytrobaida?theme=dark&bgColor=282828)
 
 ### Neutral
 
-![Dmytro Baida's LeetCode stats light](https://leetcode-badge-sage.vercel.app/badge/dmytrobaida?theme=neutral)
+```markdown
+![Dmytro Baida's LeetCode stats neutral](https://leetcode-badge-sage.vercel.app/badge/dmytrobaida?theme=neutral)
+```
+
+![Dmytro Baida's LeetCode stats neutral](https://leetcode-badge-sage.vercel.app/badge/dmytrobaida?theme=neutral)
 
 ## How to add
 
 To add statistics widget to any md file simply copy and adjust this code
 
 ```markdown
-![Enter some description](https://leetcode-badge-sage.vercel.app/badge/{your_leetcode_username}?theme={light|dark|neutral})
+![Enter some description](https://leetcode-badge-sage.vercel.app/badge/{your_leetcode_username}?theme={light|dark|neutral}&bgColor={hex_val})
 ```
 
 ## How to set background color
